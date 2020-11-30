@@ -444,10 +444,24 @@ footer p:nth-child(2){
     font-family: calibri;
     color: #7e7d7d;
 }
-.pb1, .pb2, .pb3, .pb4, .pb5, .pb6{
+.pb1, .pb3, .pb5{
     width: 150px;
     height: 320px;
     background-image: url("images/and1.png");
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-size: cover;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+}
+.pb2, .pb4, .pb6{
+    width: 150px;
+    height: 320px;
+    background-image: url("images/flut1.png");
     border-radius: 20px;
     background-repeat: no-repeat;
     display: flex;
