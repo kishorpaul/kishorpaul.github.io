@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <title>KishorPaul</title>
         <link rel="stylesheet" href="main.css">
+         <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kishorpaul</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -12,27 +17,27 @@
             <nav>
                 <a href="#" class="logo">CodeDigger</a>
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">About Me</a></li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <!--Text1------------------------------>
-            <div class="text-container">
+            <div class="text-container" id="home">
                 <p>Hello,</p>
                 <p>I'm Kishor</p>
                 <p>Web & Mobile Developer, <br>Designer</p>
                 <button class="hire-btn">Hire Me</button>
-                <button class="down-cv">Download CV</button>
+                <a href="files/KISHOR R.pdf" download target="_blank"><button class="down-cv">Download CV</button></a>
             </div>
             <!--model------------------------------>
             <img src="images/profile.jpg" class="model" alt="model"/>
         </section>
 
         <!--about section-->
-        <div class="about-container">
+        <div class="about-container" id="about">
             <img src="images/profile.jpg"/>
             <div class="about-text">
                 <p>About Me</p>
@@ -42,38 +47,84 @@
                     A young and motivated aspirant who is willing to accept opportunity to share and enhance my skills and knowledge.
                 </p>
                 <p>To have a look at some of my work, visit my Projects section.</p>
-                <button>Projects</button>
+                <a href="#project"><button>Projects</button></a>
             </div>
         </div>
 
         <!--Services Section--------------------->
-        <div class="services">
-            <div class="services-text">
-                <p>Services</p>
-            <p>Services Offered</p>
-            <p>I am also available to serve your needs in developing software to your business and maintainance. Some of my services are as follows and given below.</p>
+        <section class="services-section" id="services">
+            <div class="services" >
+                <div class="services-text">
+                    <p>Services</p>
+                <p>Services Offered</p>
+                <p>I am also available to serve your needs in developing software to your business and maintainance. Some of my services are as follows and given below.</p>
+                </div>
+                <div class="box-container">
+                    <div class="box-1">
+                        <p class="heading">Mobile <br>Application</p>
+                        <p class="details">Application which are compactable in hansets from Android to iOS devices.</p>
+                        <button>Read More</button>
+                    </div>
+                    <div class="box-2">
+                        <p class="heading">Web <br>Application</p>
+                        <p class="details">Application which are compactable in desktops from various version of browsers.</p>
+                        <button>Read More</button>
+                    </div>
+                    <div class="box-3">
+                        <p class="heading">System <br>Application</p>
+                        <p class="details">Application which are compactable in windows desktops for desirable works.</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
             </div>
-            <div class="box-container">
-                <div class="box-1">
-                    <p class="heading">Mobile <br>Application</p>
-                    <p class="details">Application which are compactable in hansets from Android to iOS devices.</p>
-                    <button>Read More</button>
+        </section>
+
+        <!--Projects Section------------------------>
+         <section class="projects-section" id="project">
+            <div class="projects">
+                <div class="projects-text">
+                    <p>Projects</p>
+                <p>Some of my projects in Mobile & Web</p>
+                <p>Here are a few of my efforts and implied application which I have build using different tools and technologies to enhance the future,</p>
                 </div>
-                <div class="box-2">
-                    <p class="heading">Web <br>Application</p>
-                    <p class="details">Application which are compactable in desktops from various version of browsers.</p>
-                    <button>Read More</button>
+                <div class="project-boxes">
+                <div class="pb1">
+                    <p class="pbh1">iView</p>
+                        <p class="pdetails">A social media application which is developed using Android Studio and Firebase for the backend.</p>
+                        <button>View More</button>
                 </div>
-                <div class="box-3">
-                    <p class="heading">System <br>Application</p>
-                    <p class="details">Application which are compactable in windows desktops for desirable works.</p>
-                    <button>Read More</button>
+                <div class="pb2">
+                    <p class="pbh2">iChat</p>
+                        <p class="pdetails">A chat application which is developed using Android Studio and Firebase for the backend.</p>
+                        <button>View More</button>
+                </div>
+                <div class="pb3">
+                    <p class="pbh3">flutChat</p>
+                        <p class="pdetails">A chat application which is developed using Flutter and Firebase for the backend.</p>
+                        <button>View More</button>
+                </div>
+                <div class="pb4">
+                    <p class="pbh4">DoDrive</p>
+                        <p class="pdetails">A book a drive application which is developed using Flutter and Firebase for the backend.</p>
+                        <button>View More</button>
+                </div>
+                <div class="pb5">
+                    <p class="pbh5">CanYou<br>Crack</p>
+                        <p class="pdetails">A quiz application which is developed using Android Studio and Firebase for the backend.</p>
+                        <button>View More</button>
+                </div>
+                <div class="pb6">
+                    <p class="pbh6">iView</p>
+                        <p class="pdetails">A social media application which is developed using Android Studio and Firebase for the backend.</p>
+                        <button>View More</button>
                 </div>
             </div>
-        </div>
+            </div>
+         </section>
+
 
         <!--Contact me section----------------------->
-        <div class="contact-me">
+        <div class="contact-me" id="contact">
             <p>Have any Query?</p>
             <button>Contact Me</button>
         </div>
@@ -83,19 +134,19 @@
             <p>CodeDigger</p>
             <p>Follow me in all social media</p>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/kishor.ak.73/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCocErB1P-RntwcSsHOlDwrQ&e=ATNubV1Sarv2ohV0EX8d-nzqq3s_b4qWb8YIZSFUQ0EAi1DZ0QH-pzZOTeM706mljNEPYqx1sRpFFB1iGTjppw1bPTR-_FwKmeGhfA&s=1" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/kishor._.paul/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
 
             <p class="copy">&copy CodeDigger by Kishorpaul - 2020</p>
         </footer>
         <div class="a-social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/kishor.ak.73/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCocErB1P-RntwcSsHOlDwrQ&e=ATNubV1Sarv2ohV0EX8d-nzqq3s_b4qWb8YIZSFUQ0EAi1DZ0QH-pzZOTeM706mljNEPYqx1sRpFFB1iGTjppw1bPTR-_FwKmeGhfA&s=1" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/kishor._.paul/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </body>
 </html>
