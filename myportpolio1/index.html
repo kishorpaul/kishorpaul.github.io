@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="animate.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+        <title>Kishorpaul</title>
+    </head> 
+    <body>
+        <!--nav section------------------------------------------------------------------>
+        <div class="container navbar">
+            <header>
+                <div class="logo">
+                    <h1>CodeDigger</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <!--main home section-->
+        <div class="container main-info-sec" id="home">
+            <div class="text">
+                <h1>
+                    <span class="m-left">H</span>
+                    <span class="m-left">i,</span>
+                    <br>
+                    <span class="m-left">I'</span>
+                    <span class="m-left">m</span>
+                    <span class="m-left name">K</span>
+                    <span class="m-left name">i</span>
+                    <span class="m-left name">s</span>
+                    <span class="m-left name">h</span>
+                    <span class="m-left name">o</span>
+                    <span class="m-left name">r</span>
+                </h1>
+                <p>Mobile & Web Dveloper,<br>
+                    Designer<p>
+                <a href="#contact"><button>Contact Me</button></a>
+                <a href="files/KISHOR R.pdf" download="" target="_blank"><button class="down-btn">Download CV</button></a>
+            </div>
+            <div class="profile-img">
+                <img class="profile-img1" src="images/profile.jpg" alt="">
+            </div>
+        </div>
+
+        <!--About me section---------------------------------------------->
+        <div class="container about" id="about">
+            <h1>About Me</h1>
+            <div class="about-me-info">
+                <p>Mobile and Web Application Developer</p>
+                <p>Hello, My name is Kishor. I'm a web & mobile application software developer and also a designer.
+                    A young and motivated aspirant who is willing to accept opportunity to share and enhance my skills and knowledge.
+                </p>
+            </div>
+        </div>
+
+        <!--Skills section--------------------------------------------------->
+        <div class="container skills" id="skills">
+            <h1>Skills</h1>
+            <p class="skills-info">
+            Web and Mobile Application Developer<br>
+                Hello, My name is Kishor. I'm a web & mobile application software developer and also a designer.
+                    A young and motivated aspirant who is willing to accept opportunity to share and enhance my skills and knowledge.
+            </p>
+            <div class="html">
+                <div class="tag-html">
+                    <p>JAVA</p>
+                </div>
+                <div class="progressbar">
+                    <div class="bar-java"></div>
+                </div>
+            </div>
+            <div class="html">
+                <div class="tag-html">
+                    <p>PYTHON</p>
+                </div>
+                <div class="progressbar">
+                    <div class="bar-py"></div>
+                </div>
+            </div>
+            <div class="html">
+                <div class="tag-html">
+                    <p>ML</p>
+                </div>
+                <div class="progressbar">
+                    <div class="bar-ml"></div>
+                </div>
+            </div>
+            <div class="html">
+                <div class="tag-html">
+                    <p>DART</p>
+                </div>
+                <div class="progressbar">
+                    <div class="bar-dart"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Work section------------------------------------------------->
+        <div class="container work" id="work">
+            <h1>Work</h1>
+            <div class="work-cat">  
+                <button id="mobile" class="active">Mobile Application Developer</button>
+                <button id="web" onclick="showRequiredCat(this)">Web Application Developer</button>
+                <button id="system" onclick="showRequiredCat(this)">System Application Developer</button>
+            </div>
+            <div class="cat-mobile showcat">
+                <a href=""><img src="images/portitem1.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem2.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem3.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem2.jpeg" alt=""></a>
+            </div>
+            <div class="cat-web hidecat">
+                <a href=""><img src="images/portitem2.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem3.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem1.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem2.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem3.jpeg" alt=""></a>
+            </div>
+            <div class="cat-system hidecat">
+                <a href=""><img src="images/portitem1.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem2.jpeg" alt=""></a>
+                <a href=""><img src="images/portitem3.jpeg" alt=""></a>
+            </div>
+        </div>
+
+        <!--Contact section--------------------------------------------->
+        <div class="container contact" id="contact">
+            <h1>Contact</h1>
+            <form action="">
+                <input type="text" name="" placeholder="Full Name">
+                <input type="email" name="" placeholder="Email Address">
+                <input type="email" name="" placeholder="Portpolioemail@example.com" disabled>
+                <textarea name="message" id="" cols="20" placeholder="Message" rows="10"></textarea>
+                <input type="submit">
+            </form>
+        </div>
+
+       
+
+        <!--FOOTER--------------------------------------------->
+        <footer class="footer">
+                <p>2020 @CodeDigger</p> 
+                <div class="social">
+                    <a href="https://www.facebook.com/kishor.ak.73/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCocErB1P-RntwcSsHOlDwrQ&e=ATNubV1Sarv2ohV0EX8d-nzqq3s_b4qWb8YIZSFUQ0EAi1DZ0QH-pzZOTeM706mljNEPYqx1sRpFFB1iGTjppw1bPTR-_FwKmeGhfA&s=1" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/kishor._.paul/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+        </footer>
+        
+        <script src="script.js"></script>
+        <script src="animation.gsap.min.js"></script>
+        <script src="CSSPlugin.min.js"></script>
+        <script src="ScrollMagic.min.js"></script>
+        <script src="TimelineLite.min.js"></script>
+        <script src="TweenMax.min.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

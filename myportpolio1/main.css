@@ -1,0 +1,362 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PT Sans", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+.container{
+    padding: 0 100px 0 100px;
+}
+nav ul,
+.main-info-sec,
+.work-cat{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+body{
+    background-color: #2a003a;
+}
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+header h1,
+header a,
+.text h1,
+.about h1,
+.skills h1,
+.work h1,
+.contact h1{
+    color: #cfcfcf;
+}
+.logo h1{
+    color: #ffffff;
+    font-size: 2rem;
+    font-family: myraid pro;
+}
+li{
+    list-style: none;
+    margin-left: 30px;
+}
+li:hover{
+    color: #ff0000;
+}
+a{
+    text-decoration: none;
+    font-style: .9rem;
+    text-transform: uppercase;
+    top: 50%;
+    position: relative;
+    bottom: 50%;
+    transform: translateY(-50%);
+}
+.main-info-sec{
+    height: calc(100vh - 81.6px);
+}
+.text{
+    margin-top: 120px;
+}
+.navbar{
+    background-color: #1d0427;
+}
+.text h1{
+    color: #ffffff;
+    font-size: 3.5rem;
+    cursor: context-menu;
+}
+.text span{
+    display: inline-block;
+}
+span:hover{
+    color: #ff0000;
+    transition: all .3s;
+}
+
+span.m-left{
+    margin-left: -10px;
+}
+span.m-left.name{
+    color: #8401b8;
+}
+span.m-left.name:hover{
+    color: #ffffff;
+}
+.text p{
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    font-size: 1rem;
+    color: #cfcfcf;
+    margin-left: -10px;
+}
+.text a{
+    transition:all .5s;
+    background-color: #ffffff;
+}
+.text button{
+    padding: 10px;
+    width: 120px;
+    height: 35px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 14px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: myraid pro;
+}
+
+.down-btn{
+    padding: 10px;
+    width: 120px;
+    height: 35px;
+    background-color: #2a003a;
+    color: #ffffff;
+    font-size: 14px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: myraid pro;
+}
+.text button:hover{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.profile-img1{
+   width: 450px;
+   height: 530px;
+   margin-top: 50px;
+   margin-right: 10px;
+}
+.about{
+    height: 100vh;
+    margin-top: 100px;
+}
+.about h1,
+.work h1{
+    font-size: 10rem;
+    z-index: 0;
+    opacity: .2;
+    font-family: myraid pro;
+}
+.about-me-info{
+    max-width: 900px;
+    background-color: #1d0427;
+    box-shadow: 0 0 1.2rem rgb(0,0,0,.25);
+    padding: 50px;
+    color: #ffffff;
+    position: relative;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.about-me-info p{
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.about-me-info p:nth-child(1){
+    font-size: 2rem;
+    color: #ffffff;
+    font-family: myraid pro;
+}
+.about-me-info p:nth-child(2){
+    font-size: 1.5rem;
+    color: #cfcfcf;
+    margin-top: 20px;
+    font-family: myraid pro;
+}
+.skills{
+    height: 100vh;
+}
+.skills h1,
+.contact h1{
+    text-align: right;
+    font-size: 10rem;
+    z-index: 0;
+    opacity: .2;
+    font-family: myraid pro;
+}
+.skills-info{
+    font-size: 1.4rem;
+    color: #ffffff;
+    max-width: 800px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin-bottom: 50px;
+}
+.html{
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 40px;
+}
+div[class^='tag-']{
+    clip-path: polygon(75% 0%,100% 50%,75% 100%,0% 100%,0% 50%,0% 0%);
+    width: 120px;
+    height: 30px;
+    background-color: #ff0000;
+    margin-right: 30px;
+}
+div[class^='tag-'] p{
+    color: #ffffff;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    padding-top: 3px;
+}
+.progressbar{
+    position: relative;
+    width: 600px;
+    height: 20px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    margin-bottom: 7px;
+}
+div[class^='bar-']{
+    position: absolute;
+    background-color: #ff0000;
+    height: 10px;
+    border-radius:20px;
+    margin: 2.7px;   
+}
+.bar-java,
+.bar-py,
+.bar-ml,
+.bar-dart{
+    width: calc(0 -6px);
+}
+.work-cat button{
+    text-transform: capitalize;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-family: calibri;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #1d0427;
+}
+.work-cat button:hover{
+    color: #000000;
+    background-color: #ffffff;
+}
+div[class^='cat-']{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
+    grid-gap: 20px;
+}
+.work a{
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+}
+button.active{
+    color: #ffffff;
+}
+.work a img{
+    width: 350px;
+    justify-self: center;
+}
+div.hidecat{
+    display: none;
+}
+.showcat{
+    display: block;
+}
+.contact{
+    margin-top: 30px;
+}
+form input,
+form textarea{
+    display: block;
+    width: 500px;
+    padding: 20px;
+    background-color: #ffffff;
+    outline: none;
+    margin: 10px 0;
+    border: none;
+    font-size: 1.2rem;
+    color: #000000;
+    position: relative;
+    border-radius: 10px;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+}
+form textarea{
+    height: 200px;
+}
+form input:last-child{
+    font-family: myraid pro;
+    font-size: 18px;
+    text-align: center;
+    width: 300px;
+    color: #ffffff;
+    background-color: #000000;
+}
+form input:last-child:hover{
+    color: #000000;
+    transition: all .6s;
+    background-color: #ffffff;
+}
+footer{
+    margin-top: 20px;
+    height: 300px;
+    margin-top: 50px;
+    color: #ffffff;
+    font-family: myraid pro;
+    background-color: #000000;
+    justify-content: center;
+    justify-items: center;
+    padding: 80px 0;
+    text-align: center;
+    font-size: 33px;
+}
+.social{
+    padding: 20px 0;
+    margin: 15px 0;
+}
+.social a{
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 20px 10px;
+    color: #000000;
+    border-radius: 50%;
+}
+.social {
+    display: flex;
+}
+.footer{
+    height: 300px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.social a:hover{
+   background-color: #000000;
+   color: #ffffff;
+   transition: all .6s;
+}
