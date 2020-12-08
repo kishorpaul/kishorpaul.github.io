@@ -1,0 +1,400 @@
+@import 'utilities.css';
+html{
+    scroll-behavior: smooth;
+}
+:root{
+    --primary:#3DCFD3;
+    --dark:#161616;
+    --pure:#FFFFFF;
+    --ternary:#898989;
+    --light:#F2F2F2;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing:antialiased;
+}
+header{
+    background-color: var(--dark);
+    clip-path: polygon(0 0 ,100% 0, 100% 100%,70% 87%,0 100%);
+}
+.container{
+    max-width: 1152px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+header nav .left a{
+    color: #FFFFFF;
+    margin-right: 2rem;
+    transition:all .6s ease;
+    font-size: .9rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+header nav .left a:hover{
+    color: #3DCFD3;
+}
+.branding{
+    color: #FFFFFF;
+    font-size: 1.6rem;
+}
+header nav{
+    padding: 2rem;
+}
+header nav .branding{
+    margin-right: 3rem;
+}
+.hero .left img{
+    width: 500px;
+}
+.hero .right{
+    color: #FFFFFF;
+    margin-top: -5rem;
+}
+.hero .right h1{
+    font-size: 3rem;
+}
+.hero .right span{
+    color: #3DCFD3;
+}
+.hero{
+    padding: 3rem 0;
+}
+.right p{
+    font-size: .9rem;
+    letter-spacing: .6px;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    font-style: myraid pro;
+    font-weight: 100;
+}
+.right h2{
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 1.6px;
+    line-height: 1.2;
+    font-weight: 100;
+}
+section{
+    padding: 6rem 0;
+}
+section.about .about-me-img{
+    height: 450px;
+}
+section.about h1{
+    margin-bottom: 1rem;
+    opacity: .7;
+    font-size: 4rem;
+    font-weight: bold;
+}
+section.about h1 span{
+    color: #3DCFD3;
+}
+section.about h2{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+section.about p{
+    font-family: myraid pro;
+    letter-spacing: 2px;
+    color: #898989;
+    margin-bottom: 50px;
+    line-height: 1.9;
+}
+.social a{
+    background-color: #000000;
+    padding: 10px 20px;
+    color: #FFFFFF;
+    height: 60px;
+    margin-right: 10px;
+    width: 100px;
+    transition: all .6s ease;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.social a:hover{
+    background: #3DCFD3;
+}
+.section-heading{
+    text-align: right;
+    margin-bottom: 1rem;
+    opacity: .7;
+    font-size: 4rem;
+    font-weight: bold;
+}
+.section-heading span{
+    color: #3DCFD3;
+}
+.section-heading + p{
+    color: var(--ternary);
+    text-align: right;
+    font-size: 1.2rem;
+    margin-bottom: 5rem;
+    font-family: myraid pro;
+}
+section.services .card-wrapper  {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 6rem; 
+}
+.card img{
+    height: 100px;
+    position: absolute;
+    top: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+section.services{
+    margin-top: -20px;
+    margin-bottom: 5rem;
+    background: var(--light);
+}
+.card{
+    position: relative;
+    padding: 3rem 2rem;
+    transition: all .6s ease;
+    padding-top: 5rem;
+    background: #FFFFFF;
+    text-align: center;
+}
+.card h2{
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: myraid pro;
+    margin-bottom: .5rem;
+}
+.card p{
+    font-family: calibri;
+    color: var(--ternary);
+    line-height: 1.6;
+}
+.card:hover{
+    background: #000000;
+    color: #FFFFFF;
+}
+.card p:hover{
+    color: var(--pure);
+}
+.freelancer{
+    text-align: left;
+    color: #FFFFFF;
+    margin-top: -2rem;
+    padding: 1rem 6rem;
+    padding-bottom: 4rem;
+    clip-path: polygon(0 0,100% 0,100% 100%,65% 75%,0 100%);
+    font-family: myraid pro;
+    font-weight: bold;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("../images/sitebg2.jpg");
+}
+.freelancer h1 span{
+    color: #3DCFD3;
+    font-size: 4rem;
+}
+.freelancer h1{
+    font-size: 4rem;
+}
+.freelancer p{
+    color: var(--ternary);
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-family: myraid pro;
+}
+.freelancer button{
+    margin-bottom: 4rem;
+}
+.projects{
+    color: #000000;
+    padding: 1rem 6rem;
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+    font-family: myraid pro;
+    font-weight: bold;
+   }
+ section.services .container{
+     margin-top: -3rem;
+ }
+ .projects .slider{
+     display:grid;
+     grid-column-gap: 10px;
+     grid-row-gap: 20px;
+     margin-top: -2rem;
+     grid-template-columns: repeat(5, 1fr);
+ }
+ .slider img{
+     height: 90px;
+     width: 100px;
+     margin-top: -9rem;
+ }
+ .slide{
+    padding: 2rem 2rem;
+    transition: all .6s ease;
+    padding-top: 5rem;
+    position: relative;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #efefef;
+    text-align: center;
+ }
+ .slide:hover .overlay{
+    opacity: 1;
+ }
+ .slide h1{
+     font-family: myraid pro;
+     font-size: 1.5rem;
+     letter-spacing: -1px;
+ }
+ .slide p{
+     letter-spacing: 1px;
+     font-family: calibri;
+     font-weight: normal;
+     font-size: 1rem;
+     color: #898989;
+     margin-top: 13px;
+ }
+ .slide p:nth-last-child(1){
+    text-align: right;
+    color: #000000;
+    font-style: italic;
+    font-size: .8rem;
+    font-family: myraid pro;
+    font-weight: bold;
+}
+.section-heading span{
+    color: #3DCFD3;
+}
+.slide .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    width: 100%;
+    color: #898989;
+    opacity: 0;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s ease;
+    flex-direction: column;
+}
+.slide .overlay a{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+.contact{
+    background:var(--light);
+    padding: 4rem 6rem;
+}
+.contact-container{
+    font-size: 2.5rem;
+    font-family: myraid pro;
+    text-align: left;
+}
+.contact-container p{
+    color: var(--ternary);
+    font-size: 1.2rem;
+    margin-bottom: 5rem;
+    font-family: myraid pro;
+}
+
+.contact-container span{
+    color: #3DCFD3;
+}
+.contact-card img{
+    width: 100px;
+    margin-bottom: 2rem;
+    height: 100px;
+}
+.contact-card-wrapper{
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 3rem;
+}
+.contact-card{
+    text-align: center;
+}
+.contact-card h2{
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+.contact-card h6{
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ternary);
+}
+.contact-input-wrap1{
+    display: grid;
+    grid-gap: 1rem;
+    margin-bottom: 1em;
+    grid-template-columns: repeat(2,1fr);
+}
+.contact-input-wrap2{
+    display: flex;
+    flex-direction: column;
+}
+.contact input{
+    padding: .5rem;
+}
+.contact-input-wrap2 input{
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    border: 2px solid var(--light);
+}
+.contact-input-wrap2 textarea{
+    padding: .5rem;
+}
+.contact-input-wrap1 input,
+.contact-input-wrap2 textarea{
+    border-radius: 5px;
+    border: 2px solid var(--light);
+}
+.contact input:focus{
+    outline: none;
+}
+.contact textarea:focus{
+    outline: none;
+}
+.contact-input-submit{
+    text-align: center;
+    margin-top: 1rem;
+}
+footer{
+    background: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 4rem 6rem;
+}
+.footer-social a{
+    background-color: #ffffff;
+    padding: 10px 20px;
+    color: #000000;
+    height: 60px;
+    margin: 2rem;
+    width: 100px;
+    transition: all .6s ease;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.footer-logo{
+    margin-bottom: 3rem;
+}
+.footer-cp{
+    font-size: .5rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    color: var(--ternary);
+}
+.footer-social a:hover{
+    background: #3DCFD3;
+    color: #000000;
+}
