@@ -20,13 +20,14 @@ html{
 body{
     background: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Inter', sans-serif;
 }
 .header{
     position: fixed;
     width: 100%;
     top:0;
     left: 0;
-    padding: 1rem 8%;
+    padding: 2rem 8%;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     display: flex;
@@ -406,9 +407,92 @@ section:nth-child(5), section:nth-child(6){
     font-size: 1.7rem;
     margin-top: 30px;
 }
+
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(2px);
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  display: none;
+}
+.popup-content{
+    background: white;
+    margin: 5% auto; 
+    padding: 2rem;
+    width: 400px;
+    height: 500px;
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgb(255, 255, 255);
+}
+.popup-content .close{
+    font-size: 4rem;
+}
+.popup-content  h2{
+    color: var(--bg-color);
+    text-align: center;
+    font-size: 2.5rem;
+}
+.popup-content form{
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    flex-direction: column;
+}
+.popup-content form label{
+    color: var(--bg-color);
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-top: 5px;
+}
+.popup-content form input,
+.popup-content form textarea{
+    width: 100%;
+    color: var(--bg-color);
+    padding: .5rem;
+    font-size: 1.3rem;
+    resize: none;
+    border-radius: .5rem;
+    border: 1px solid grey;
+}
+#hire_submit{
+    margin-top: 3rem;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    background: var(--bg-color);
+    width: 100  %;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    font-weight: 600;
+    font-style: 4rem;
+    color: white;
+}
+
+/* Responsive */
 @media(max-width:1200px){
+    section{
+        padding: 2rem 10%;
+    }
     #menu-icon{
         display: block;
+        font-size: 7rem;
+        position: fixed;
+        margin: 0 7rem;
+        right: 0;
+    }
+    .header{
+        padding: 7rem;
+    }
+    .logo{
+        font-size: 6rem;
+        position: fixed;
+        left: 0;
+        margin: 0 7rem;
     }
     .navbar{
         position: absolute;
@@ -437,18 +521,15 @@ section:nth-child(5), section:nth-child(6){
     }
     .home{
         flex-direction: column-reverse;
-        margin-top: 25rem;
-        gap: 5rem;
+        gap: 1rem;
     }
     .home-content{
         align-items: center;
         text-align: center;
     }
-    section{
-        min-height: 100vh;
-    }
     .home-img img{
         width: 54vw;
+        height: 40vh;
     }
     .about{
         flex-direction: column-reverse;
