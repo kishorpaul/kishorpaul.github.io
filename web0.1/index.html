@@ -7,6 +7,42 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* loading shimmer */
+    .loading-shimmer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(83,74,183,0) 0%,
+        rgba(83,74,183,0.15) 25%,
+        rgba(83,74,183,0.3) 50%,
+        rgba(83,74,183,0.15) 75%,
+        rgba(83,74,183,0) 100%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.4s ease-out;
+    }
+
+    .loading-shimmer.active {
+      opacity: 1;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #0a0a09;
@@ -121,7 +157,7 @@
       height: 88px;
       border-radius: 50%;
       background: linear-gradient(135deg, #2a2560 0%, #1a3a2e 100%);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 2px solid #534ab7;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -207,33 +243,69 @@
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 2.5rem;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-summary {
+      font-size: 13px;
+      color: #b4b2a9;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      border-left: 2px solid rgba(83,74,183,0.3);
+      background: rgba(83,74,183,0.04);
+      border-radius: 6px;
+    }
+
+    .skills-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #888780;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skills-group-title::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #534ab7;
     }
 
     .tag {
-      font-size: 13px;
-      padding: 5px 14px;
-      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      padding: 4px 12px;
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 999px;
-      color: #b4b2a9;
-      background: linear-gradient(135deg, rgba(83,74,183,0.12) 0%, rgba(29,158,117,0.08) 100%);
+      color: #888780;
+      background: rgba(83,74,183,0.06);
       cursor: pointer;
-      transition: transform 0.15s, border-color 0.15s, color 0.15s, background 0.15s;
+      transition: all 0.15s ease;
       user-select: none;
     }
 
     .tag:hover {
-      transform: translateY(-3px) scale(1.05);
-      border-color: rgba(83,74,183,0.5);
+      transform: translateY(-2px);
+      border-color: rgba(83,74,183,0.3);
       color: #f0ede8;
-      background: linear-gradient(135deg, rgba(83,74,183,0.3) 0%, rgba(29,158,117,0.2) 100%);
+      background: rgba(83,74,183,0.15);
     }
 
     .tag.active {
-      border-color: #534ab7;
+      border-color: rgba(83,74,183,0.5);
       color: #f0ede8;
-      background: linear-gradient(135deg, rgba(83,74,183,0.45) 0%, rgba(29,158,117,0.3) 100%);
+      background: rgba(83,74,183,0.2);
     }
 
     /* buttons row */
@@ -679,6 +751,573 @@
     }
 
     /* footer section */
+    /* certifications section */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cert-card {
+      background: linear-gradient(135deg, rgba(83,74,183,0.08) 0%, rgba(29,158,117,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .cert-card:hover {
+      border-color: rgba(83,74,183,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(83,74,183,0.12);
+    }
+
+    .cert-card:hover::before {
+      left: 100%;
+    }
+
+    .cert-icon {
+      font-size: 32px;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .cert-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f0ede8;
+      margin-bottom: 0.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-issuer {
+      font-size: 12px;
+      color: #888780;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-year {
+      font-size: 11px;
+      color: #534ab7;
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* youtube carousel preview section */
+    .youtube-carousel-preview {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .youtube-slides-preview {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .youtube-slide-preview {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(83,74,183,0.08) 0%, rgba(29,158,117,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .youtube-slide-preview:hover {
+      border-color: rgba(83,74,183,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(83,74,183,0.12);
+    }
+
+    .youtube-thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #1a1a18;
+    }
+
+    .youtube-thumbnail-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .youtube-slide-preview:hover .youtube-thumbnail-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .youtube-play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      background: rgba(83,74,183,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(83,74,183,0.4);
+    }
+
+    .youtube-slide-preview:hover .youtube-play-overlay {
+      background: rgba(83,74,183,1);
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 8px 24px rgba(83,74,183,0.6);
+    }
+
+    .youtube-preview-info {
+      padding: 12px;
+      background: rgba(83,74,183,0.08);
+      border-radius: 0 0 14px 14px;
+    }
+
+    .youtube-preview-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f0ede8;
+      margin-bottom: 4px;
+    }
+
+    .youtube-preview-meta {
+      font-size: 11px;
+      color: #888780;
+    }
+
+    @media (max-width: 768px) {
+      .youtube-slides-preview {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .youtube-play-overlay {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+      }
+
+      .youtube-preview-info {
+        padding: 10px;
+      }
+
+      .youtube-preview-title {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .youtube-slides-preview {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .youtube-play-overlay {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+    }
+
+    /* timeline section */
+    .timeline-container {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      align-items: center;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      grid-column: 1 / 2;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      grid-column: 2 / 3;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-date {
+      grid-column: 3 / 4;
+      text-align: left;
+    }
+
+    .timeline-item:nth-child(even) {
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+      grid-column: 1 / 2;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      grid-column: 2 / 3;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      grid-column: 3 / 4;
+    }
+
+    .timeline-dot {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #534ab7, #1d9e75);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(83,74,183,0.5);
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-date {
+      font-size: 13px;
+      color: #888780;
+      font-weight: 500;
+    }
+
+    .timeline-content {
+      background: linear-gradient(135deg, rgba(83,74,183,0.08) 0%, rgba(29,158,117,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem;
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    .timeline-content-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f0ede8;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content-subtitle {
+      font-size: 13px;
+      color: #b4b2a9;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-content-description {
+      font-size: 12px;
+      color: #888780;
+      line-height: 1.6;
+    }
+
+    /* skills section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-category {
+      background: linear-gradient(135deg, rgba(83,74,183,0.08) 0%, rgba(29,158,117,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .skills-category:hover {
+      border-color: rgba(83,74,183,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(83,74,183,0.12);
+    }
+
+    .skills-category-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f0ede8;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skills-category-icon {
+      font-size: 16px;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background: rgba(83,74,183,0.12);
+      border: 1px solid rgba(83,74,183,0.2);
+      color: #b4b2a9;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(83,74,183,0.25);
+      border-color: rgba(83,74,183,0.4);
+      color: #f0ede8;
+    }
+
+    /* achievements section */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .achievement-card {
+      background: linear-gradient(135deg, rgba(83,74,183,0.08) 0%, rgba(29,158,117,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .achievement-card:hover {
+      border-color: rgba(83,74,183,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(83,74,183,0.12);
+    }
+
+    .achievement-icon {
+      font-size: 32px;
+      margin-bottom: 0.75rem;
+    }
+
+    .achievement-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f0ede8;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-meta {
+      font-size: 12px;
+      color: #888780;
+    }
+
+    /* faq section */
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: linear-gradient(135deg, rgba(83,74,183,0.08) 0%, rgba(29,158,117,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(83,74,183,0.4);
+    }
+
+    .faq-question {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #f0ede8;
+      font-size: 14px;
+      user-select: none;
+      transition: all 0.2s;
+    }
+
+    .faq-question:hover {
+      color: #534ab7;
+    }
+
+    .faq-toggle {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    .faq-answer-text {
+      color: #b4b2a9;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* resume button */
+    .resume-button {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #f0ede8;
+      background: linear-gradient(135deg, rgba(83,74,183,0.25) 0%, rgba(29,158,117,0.2) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 24px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s, background 0.2s;
+    }
+
+    .resume-button:hover {
+      border-color: rgba(255,255,255,0.22);
+      background: linear-gradient(135deg, rgba(83,74,183,0.4) 0%, rgba(29,158,117,0.3) 100%);
+      transform: translateY(-2px);
+    }
+
+    .resume-button:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .timeline-item .timeline-content,
+      .timeline-item .timeline-date,
+      .timeline-item:nth-child(even) .timeline-date,
+      .timeline-item:nth-child(odd) .timeline-date {
+        grid-column: 1 / 2;
+        text-align: left;
+      }
+
+      .timeline-dot {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .youtube-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .youtube-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(83,74,183,0.12) 0%, rgba(29,158,117,0.08) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #b4b2a9;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .youtube-btn:hover {
+      border-color: rgba(83,74,183,0.4);
+      color: #f0ede8;
+      transform: scale(1.05);
+    }
+
+    .youtube-btn:active {
+      transform: scale(0.95);
+    }
+
+    .youtube-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .youtube-indicators {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .youtube-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2c2c2a;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .youtube-dot.active {
+      background: #534ab7;
+      width: 16px;
+      border-radius: 3px;
+      box-shadow: 0 0 6px rgba(83,74,183,0.5);
+    }
+
     .footer-section {
       margin-top: 4rem;
       padding-top: 2.5rem;
@@ -825,6 +1464,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 4px;
       padding: 8px 12px;
       cursor: pointer;
@@ -833,11 +1473,18 @@
       color: #444441;
       text-decoration: none;
       border-radius: 8px;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .mobile-nav-item:active {
       color: #f0ede8;
       background: rgba(83,74,183,0.15);
+    }
+
+    .mobile-nav-item.active {
+      color: #f0ede8;
+      background: rgba(83,74,183,0.12);
     }
 
     .mobile-nav-dot {
@@ -885,10 +1532,15 @@
         margin-bottom: 1.25rem;
       }
 
+      .avatar-ring {
+        display: none;
+      }
+
       .avatar {
         width: 80px;
         height: 80px;
         font-size: 28px;
+        border: 2px solid #534ab7;
       }
 
       .bio {
@@ -898,6 +1550,20 @@
 
       .section {
         padding: 2rem 0;
+      }
+
+      .skills-summary {
+        font-size: 12px;
+        padding: 0.6rem 0.75rem;
+      }
+
+      .skills-group-title {
+        font-size: 11px;
+      }
+
+      .tag {
+        font-size: 11px;
+        padding: 3px 10px;
       }
 
       .section-label {
@@ -982,9 +1648,63 @@
         font-size: 11px;
       }
 
+      .certifications-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .cert-card {
+        padding: 1rem;
+      }
+
+      .cert-icon {
+        font-size: 28px;
+        margin-bottom: 0.5rem;
+      }
+
+      .cert-name {
+        font-size: 13px;
+      }
+
+      .cert-issuer {
+        font-size: 11px;
+      }
+
+      .youtube-carousel {
+        margin-bottom: 1rem;
+      }
+
+      .youtube-slide {
+        aspect-ratio: 16 / 9;
+        border-radius: 10px;
+      }
+
+      .youtube-controls {
+        gap: 6px;
+      }
+
+      .youtube-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+
       .about-bio {
         font-size: 14px;
         padding-left: 0.75rem;
+      }
+
+      .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .cert-card {
+        padding: 0.9rem;
+      }
+
+      .cert-icon {
+        font-size: 24px;
       }
 
       .actions {
@@ -1038,6 +1758,11 @@
         width: 72px;
         height: 72px;
         font-size: 26px;
+        border: 2px solid #534ab7;
+      }
+
+      .avatar-ring {
+        display: none;
       }
 
       .bio {
@@ -1174,6 +1899,7 @@
         width: 64px;
         height: 64px;
         font-size: 24px;
+        border: 2px solid #534ab7;
       }
 
       .bio {
@@ -1196,6 +1922,7 @@
 </head>
 <body>
 
+<div class="loading-shimmer active" id="loadingShimmer"></div>
 <div id="cursor-glow"></div>
 <div id="cursor-dot"></div>
 
@@ -1211,6 +1938,26 @@
   </div>
   <div class="nav-item" data-target="projectsSection">
     <span class="nav-label">Projects</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="certificationsSection">
+    <span class="nav-label">Certs</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="timelineSection">
+    <span class="nav-label">Timeline</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="techStackSection">
+    <span class="nav-label">Stack</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="achievementsSection">
+    <span class="nav-label">Awards</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="faqSection">
+    <span class="nav-label">FAQ</span>
     <div class="nav-dot"></div>
   </div>
   <div class="nav-item" data-target="aboutSection">
@@ -1245,6 +1992,7 @@
 
     <div class="actions">
       <a class="cta" id="contactBtn">Get in touch →</a>
+      <a class="resume-button" href="#" download>📥 Download Resume</a>
       <a class="cta-ghost" href="#" onclick="toggleDark()">Toggle theme</a>
     </div>
   </div>
@@ -1252,14 +2000,31 @@
   <!-- skills -->
   <div id="skillsSection" class="section">
     <div class="section-label"><span>Skills</span></div>
-    <div class="tags" id="tags">
-      <span class="tag" data-info="UI components & web apps">React</span>
-      <span class="tag" data-info="Cross-platform mobile apps">React Native</span>
-      <span class="tag" data-info="Core scripting & logic">JavaScript</span>
-      <span class="tag" data-info="Type-safe development">TypeScript</span>
-      <span class="tag" data-info="Backend & APIs">Node.js</span>
+    
+    <div class="skills-summary">
+      <p>Specialized in building responsive web and mobile applications with modern JavaScript frameworks. Strong foundation in backend development and cloud technologies.</p>
     </div>
-    <div id="tag-info" style="font-size:13px;color:#534ab7;min-height:1.3em;transition:opacity 0.2s;opacity:0;"></div>
+
+    <div class="skills-group">
+      <div class="skills-group-title">Frontend</div>
+      <div class="tags" id="tags">
+        <span class="tag" data-info="UI components & web apps">React</span>
+        <span class="tag" data-info="Mobile apps">React Native</span>
+        <span class="tag" data-info="Core scripting">JavaScript</span>
+        <span class="tag" data-info="Type-safe">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="skills-group-title">Backend & Tools</div>
+      <div class="tags">
+        <span class="tag" data-info="Backend APIs">Node.js</span>
+        <span class="tag" data-info="Version control">Git</span>
+        <span class="tag" data-info="Containerization">Docker</span>
+      </div>
+    </div>
+
+    <div id="tag-info" style="font-size:12px;color:#534ab7;min-height:1.2em;transition:opacity 0.2s;opacity:0;margin-top:1rem;"></div>
   </div>
 
   <!-- projects -->
@@ -1349,6 +2114,312 @@
     </div>
   </div>
 
+  <!-- certifications -->
+  <div id="certificationsSection" class="section">
+    <div class="section-label"><span>Certifications</span></div>
+
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏛️</div>
+        <div class="cert-name">Certified Claude Architect</div>
+        <div class="cert-issuer">Anthropic</div>
+        <div class="cert-year">2024</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🛢️</div>
+        <div class="cert-name">Databricks Certified Data Engineer</div>
+        <div class="cert-issuer">Databricks</div>
+        <div class="cert-year">2023</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div class="cert-name">Azure Data Platforms</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-year">2023</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <div class="cert-name">GCP Associate Cloud Engineer</div>
+        <div class="cert-issuer">Google Cloud</div>
+        <div class="cert-year">2022</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- youtube -->
+  <div id="youtubeSection" class="section">
+    <div class="section-label"><span>YouTube Channel</span></div>
+
+    <div class="youtube-carousel-preview">
+      <div class="youtube-slides-preview" id="youtubeSlides">
+        <!-- Video 1 -->
+        <a href="https://www.youtube.com/watch?v=AzlDKVaWIOE" target="_blank" rel="noopener noreferrer" class="youtube-slide-preview">
+          <div class="youtube-thumbnail-wrapper">
+            <img src="https://img.youtube.com/vi/AzlDKVaWIOE/maxresdefault.jpg" alt="Video 1" onerror="this.src='https://img.youtube.com/vi/AzlDKVaWIOE/hqdefault.jpg'">
+            <div class="youtube-play-overlay">▶</div>
+          </div>
+          <div class="youtube-preview-info">
+            <div class="youtube-preview-title">Video 1</div>
+            <div class="youtube-preview-meta">Watch on YouTube</div>
+          </div>
+        </a>
+
+        <!-- Video 2 -->
+        <a href="https://www.youtube.com/watch?v=AzlDKVaWIOE" target="_blank" rel="noopener noreferrer" class="youtube-slide-preview">
+          <div class="youtube-thumbnail-wrapper">
+            <img src="https://img.youtube.com/vi/AzlDKVaWIOE/maxresdefault.jpg" alt="Video 2" onerror="this.src='https://img.youtube.com/vi/AzlDKVaWIOE/hqdefault.jpg'">
+            <div class="youtube-play-overlay">▶</div>
+          </div>
+          <div class="youtube-preview-info">
+            <div class="youtube-preview-title">Video 2</div>
+            <div class="youtube-preview-meta">Watch on YouTube</div>
+          </div>
+        </a>
+
+        <!-- Video 3 -->
+        <a href="https://www.youtube.com/watch?v=AzlDKVaWIOE" target="_blank" rel="noopener noreferrer" class="youtube-slide-preview">
+          <div class="youtube-thumbnail-wrapper">
+            <img src="https://img.youtube.com/vi/AzlDKVaWIOE/maxresdefault.jpg" alt="Video 3" onerror="this.src='https://img.youtube.com/vi/AzlDKVaWIOE/hqdefault.jpg'">
+            <div class="youtube-play-overlay">▶</div>
+          </div>
+          <div class="youtube-preview-info">
+            <div class="youtube-preview-title">Video 3</div>
+            <div class="youtube-preview-meta">Watch on YouTube</div>
+          </div>
+        </a>
+
+        <!-- Video 4 -->
+        <a href="https://www.youtube.com/watch?v=AzlDKVaWIOE" target="_blank" rel="noopener noreferrer" class="youtube-slide-preview">
+          <div class="youtube-thumbnail-wrapper">
+            <img src="https://img.youtube.com/vi/AzlDKVaWIOE/maxresdefault.jpg" alt="Video 4" onerror="this.src='https://img.youtube.com/vi/AzlDKVaWIOE/hqdefault.jpg'">
+            <div class="youtube-play-overlay">▶</div>
+          </div>
+          <div class="youtube-preview-info">
+            <div class="youtube-preview-title">Video 4</div>
+            <div class="youtube-preview-meta">Watch on YouTube</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- timeline -->
+  <div id="timelineSection" class="section">
+    <div class="section-label"><span>Career Timeline</span></div>
+
+    <div class="timeline-container">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-content-title">Senior Data Engineer</div>
+          <div class="timeline-content-subtitle">Current Company, Bengaluru</div>
+          <div class="timeline-content-description">Leading ETL pipeline optimization and real-time data streaming architecture. Reduced pipeline latency by 40%, processing 10M+ events daily with Spark & Kafka.</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023 - Present</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021 - 2023</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-content-title">Data Engineer</div>
+          <div class="timeline-content-subtitle">Mid-Level Role</div>
+          <div class="timeline-content-description">Built scalable data pipelines using Apache Spark, Kafka, and Python. Worked with PostgreSQL, MongoDB, and cloud platforms (AWS, GCP). Implemented dbt workflows and Airflow orchestrations.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-content-title">Junior Data Engineer</div>
+          <div class="timeline-content-subtitle">Early Career Role</div>
+          <div class="timeline-content-description">Started data engineering journey with SQL, Python fundamentals, and basic ETL development. Built first data pipelines and learned cloud platforms (AWS, Azure, GCP).</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2019 - 2021</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2018 - 2019</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-content-title">Education & Foundation</div>
+          <div class="timeline-content-subtitle">Computer Science Degree</div>
+          <div class="timeline-content-description">Strong foundation in algorithms, databases, data structures, and software architecture. Passion for building efficient systems and solving complex data problems.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- skills -->
+  <div id="techStackSection" class="section">
+    <div class="section-label"><span>Tech Stack</span></div>
+
+    <div class="skills-grid">
+      <div class="skills-category">
+        <div class="skills-category-title">
+          <span class="skills-category-icon">🐍</span>
+          Languages
+        </div>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Kotlin</span>
+        <span class="skill-tag">JavaScript</span>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-category-title">
+          <span class="skills-category-icon">🗄️</span>
+          Databases
+        </div>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Cassandra</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">Firebase</span>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-category-title">
+          <span class="skills-category-icon">☁️</span>
+          Cloud
+        </div>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">GCP</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Lambda</span>
+        <span class="skill-tag">BigQuery</span>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-category-title">
+          <span class="skills-category-icon">⚡</span>
+          Big Data
+        </div>
+        <span class="skill-tag">Apache Spark</span>
+        <span class="skill-tag">Kafka</span>
+        <span class="skill-tag">Hadoop</span>
+        <span class="skill-tag">Airflow</span>
+        <span class="skill-tag">dbt</span>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-category-title">
+          <span class="skills-category-icon">🔧</span>
+          Tools
+        </div>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Jenkins</span>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-category-title">
+          <span class="skills-category-icon">⚙️</span>
+          Frameworks
+        </div>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">React Native</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express</span>
+        <span class="skill-tag">FastAPI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- achievements -->
+  <div id="achievementsSection" class="section">
+    <div class="section-label"><span>Achievements & Awards</span></div>
+
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <div class="achievement-icon">⚡</div>
+        <div class="achievement-title">40% Pipeline Optimization</div>
+        <div class="achievement-meta">2023 - Reduced ETL Latency</div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">🚀</div>
+        <div class="achievement-title">10M+ Daily Events</div>
+        <div class="achievement-meta">Real-time Data Processing at Scale</div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-title">5+ Years Experience</div>
+        <div class="achievement-meta">Data Engineering & Full Stack</div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">📊</div>
+        <div class="achievement-title">Multi-Cloud Expertise</div>
+        <div class="achievement-meta">AWS, GCP, Azure Certified</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- faq -->
+  <div id="faqSection" class="section">
+    <div class="section-label"><span>FAQ</span></div>
+
+    <div class="faq-container">
+      <div class="faq-item active">
+        <div class="faq-question">
+          <span>What's your experience in data engineering?</span>
+          <span class="faq-toggle">⌄</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-text">I have 5+ years of professional experience in data engineering, currently as a Senior Data Engineer. I specialize in building scalable ETL pipelines, real-time data streaming, and cloud infrastructure. I've worked on processing 10M+ events daily and optimized pipelines by 40%.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What technologies do you work with?</span>
+          <span class="faq-toggle">⌄</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-text">My core tech stack includes Apache Spark, Kafka, Python, SQL, and cloud platforms (AWS, GCP, Azure). I also work with databases like PostgreSQL, MongoDB, and Cassandra. For orchestration, I use Airflow and dbt. I'm also experienced in modern development with React, React Native, and Node.js.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Where are you based and what's your timezone?</span>
+          <span class="faq-toggle">⌄</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-text">I'm based in Bengaluru, Karnataka, India (IST - Indian Standard Time, UTC+5:30). I'm open to remote work and flexible with collaboration across different timezones.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are you open to freelance or contract work?</span>
+          <span class="faq-toggle">⌄</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-text">Yes, I'm open to select freelance projects and consulting work. I focus on data pipeline architecture, ETL optimization, and mentoring teams. I prefer long-term engagements where I can make a meaningful impact. Feel free to reach out with your requirements.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What's your typical project timeline and rates?</span>
+          <span class="faq-toggle">⌄</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-text">Project timelines vary based on scope. Small optimization projects: 2-4 weeks. Medium pipeline builds: 6-8 weeks. Large-scale architecture: 3-6 months. For rates and specific project discussions, please reach out directly via email or LinkedIn.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- about -->
   <div id="aboutSection" class="section">
     <div class="section-label"><span>About me</span></div>
@@ -1420,7 +2491,7 @@
             <a href="mailto:kishor@example.com">kishorpaul962@gmail.com</a>
           </div>
           <div class="contact-item">
-            <a href="tel:+919876543210">+91 0000000000</a>
+            <a href="tel:+919876543210">+91 00000 00000</a>
           </div>
           <div class="contact-item">
             📍 Bengaluru, India
@@ -1430,7 +2501,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>Designed &amp; built with care • © 2026 Kishor<br />
+      <p>Designed &amp; built with care • © 2024 Kishor<br />
       <a href="#heroSection">Back to top ↑</a></p>
     </div>
   </div>
@@ -1459,6 +2530,14 @@
 </div>
 
 <script>
+  // fade out loading shimmer when page loads
+  window.addEventListener('load', () => {
+    const shimmer = document.getElementById('loadingShimmer');
+    setTimeout(() => {
+      shimmer.classList.remove('active');
+    }, 500);  // fade out after 500ms
+  });
+
   // cursor glow
   const glow = document.getElementById('cursor-glow');
   const dot  = document.getElementById('cursor-dot');
@@ -1591,29 +2670,70 @@
     document.body.style.color = dark ? '#f0ede8' : '#1a1a18';
   }
 
-  // mobile nav functionality
-  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-  mobileNavItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const target = document.getElementById(item.dataset.target);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-      mobileNavItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
+  // faq toggle functionality
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+      // Close other items
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      // Toggle current item
+      item.classList.toggle('active');
     });
   });
 
-  // update mobile nav on scroll
-  const mobileNavObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        mobileNavItems.forEach(item => {
-          item.classList.toggle('active', item.dataset.target === entry.target.id);
-        });
-      }
+  // mobile nav functionality - FIXED
+  window.addEventListener('DOMContentLoaded', () => {
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    
+    mobileNavItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const targetId = this.getAttribute('data-target');
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Scroll to element
+          targetElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+          
+          // Update active state
+          mobileNavItems.forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+        } else {
+          console.error('Target not found:', targetId);
+        }
+      });
     });
-  }, { threshold: 0.25 });
 
-  document.querySelectorAll('.section, #heroSection').forEach(s => mobileNavObserver.observe(s));
+    // update mobile nav on scroll
+    const mobileNavObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          mobileNavItems.forEach(item => {
+            const isActive = item.getAttribute('data-target') === entry.target.id;
+            if (isActive) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.25 });
+
+    // Observe all sections
+    document.querySelectorAll('[id$="Section"]').forEach(s => {
+      mobileNavObserver.observe(s);
+    });
+  });
 </script>
 
 <!-- mobile bottom nav -->
@@ -1631,6 +2751,22 @@
       <span>Projects</span>
       <div class="mobile-nav-dot"></div>
     </a>
+    <a class="mobile-nav-item" data-target="certificationsSection">
+      <span>Certs</span>
+      <div class="mobile-nav-dot"></div>
+    </a>
+    <a class="mobile-nav-item" data-target="timelineSection">
+      <span>Timeline</span>
+      <div class="mobile-nav-dot"></div>
+    </a>
+    <a class="mobile-nav-item" data-target="techStackSection">
+      <span>Stack</span>
+      <div class="mobile-nav-dot"></div>
+    </a>
+    <a class="mobile-nav-item" data-target="faqSection">
+      <span>FAQ</span>
+      <div class="mobile-nav-dot"></div>
+    </a>
     <a class="mobile-nav-item" data-target="aboutSection">
       <span>About</span>
       <div class="mobile-nav-dot"></div>
@@ -1643,4 +2779,4 @@
 </nav>
 
 </body>
-</html>
+<!-- </html> -->
