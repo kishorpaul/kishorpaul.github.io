@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kishor & Aish — Wedding Invitation</title>
+<title>Arjun & Kavya — Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -43,11 +43,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--ivory-d); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-
+/* ════════════════════════════
+   SVG MOTIFS (inline patterns)
+════════════════════════════ */
 .motif-border {
   width: 100%; height: 3px;
   background: linear-gradient(90deg, transparent, var(--gold), var(--saffron), var(--gold), transparent);
@@ -62,6 +65,7 @@ body {
 }
 .motif-dot.lg { width: 9px; height: 9px; background: var(--saffron); }
 
+/* Ornamental divider */
 .ornament {
   display: flex; align-items: center; justify-content: center; gap: 12px;
   margin: 20px auto;
@@ -76,10 +80,13 @@ body {
   font-family: var(--ff-sanskrit);
 }
 
+/* ════════════════════════════
+   NAV
+════════════════════════════ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   background: rgba(107,26,26,0.96);
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(196,154,60,.3);
   padding: 0 40px; height: 56px;
   display: flex; align-items: center; justify-content: space-between;
@@ -100,6 +107,9 @@ nav {
 }
 .nav-link:hover { color: var(--gold-pale); }
 
+/* ════════════════════════════
+   HERO
+════════════════════════════ */
 #hero {
   min-height: 100vh;
   background: var(--maroon-d);
@@ -109,16 +119,18 @@ nav {
   text-align: center;
 }
 
+/* Mandala SVG background */
 .hero-mandala {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 700px; height: 700px;
-  opacity: .2;
+  opacity: .07;
   animation: rotateSlow 90s linear infinite;
   pointer-events: none;
 }
 @keyframes rotateSlow { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
 
+/* Corner ornaments */
 .hero-corner {
   position: absolute; width: 180px; height: 180px;
   opacity: .35;
@@ -216,6 +228,9 @@ nav {
 
 @keyframes fadeDown { from { opacity:0; transform:translateY(-18px); } to { opacity:1; transform:translateY(0); } }
 
+/* ════════════════════════════
+   SECTION WRAPPER
+════════════════════════════ */
 .section {
   padding: 100px 40px;
   max-width: 1100px;
@@ -253,6 +268,9 @@ nav {
 }
 .section-bg-dark .section-subtitle { color: rgba(245,232,192,.5); }
 
+/* ════════════════════════════
+   JOURNEY / STORY
+════════════════════════════ */
 #journey { background: var(--ivory); }
 
 .journey-grid {
@@ -325,6 +343,9 @@ nav {
   font-size: 15px; line-height: 1.6; color: var(--ink-soft);
 }
 
+/* ════════════════════════════
+   GALLERY
+════════════════════════════ */
 #gallery { background: var(--maroon-d); }
 
 .gallery-masonry {
@@ -358,6 +379,7 @@ nav {
 }
 .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
 
+/* Lightbox */
 #lightbox {
   position: fixed; inset: 0; z-index: 9000;
   background: rgba(10,4,2,.94);
@@ -396,6 +418,9 @@ nav {
   font-style: italic; color: var(--gold-pale); font-size: 14px;
 }
 
+/* ════════════════════════════
+   CELEBRATION DETAILS
+════════════════════════════ */
 #celebration { background: var(--ivory); }
 
 .celebrations-grid {
@@ -449,6 +474,9 @@ nav {
   text-align: left; font-style: italic;
 }
 
+/* ════════════════════════════
+   VENUE
+════════════════════════════ */
 #venue { background: var(--ivory-d); }
 
 .venue-grid {
@@ -567,6 +595,9 @@ nav {
   font-size: 12px; color: rgba(245,232,192,.35); font-style: italic;
 }
 
+/* ════════════════════════════
+   CONTACT
+════════════════════════════ */
 #contact { background: var(--ivory); }
 
 .contact-grid {
@@ -649,6 +680,9 @@ nav {
 }
 .form-submit:hover { background: var(--gold-lt); }
 
+/* ════════════════════════════
+   COUNTDOWN
+════════════════════════════ */
 #countdown-section {
   background: var(--ivory-d);
   padding: 60px 40px;
@@ -680,6 +714,9 @@ nav {
   color: var(--gold-pale); padding-bottom: 20px;
 }
 
+/* ════════════════════════════
+   FOOTER
+════════════════════════════ */
 footer {
   background: var(--maroon-d);
   padding: 60px 40px 40px;
@@ -705,6 +742,9 @@ footer {
   letter-spacing: .08em; font-style: italic;
 }
 
+/* ════════════════════════════
+   TOAST
+════════════════════════════ */
 #toast {
   position: fixed; bottom: 32px; left: 50%;
   transform: translateX(-50%) translateY(20px);
@@ -717,6 +757,9 @@ footer {
 }
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* ════════════════════════════
+   REVEAL ANIMATIONS
+════════════════════════════ */
 .reveal {
   opacity: 0; transform: translateY(32px);
   transition: opacity .8s ease, transform .8s ease;
@@ -731,6 +774,9 @@ footer {
 .delay-3 { transition-delay: .3s }
 .delay-4 { transition-delay: .4s }
 
+/* ════════════════════════════
+   RESPONSIVE
+════════════════════════════ */
 @media (max-width: 900px) {
   .journey-grid, .venue-grid, .contact-grid,
   .celebrations-grid, .families-grid { grid-template-columns: 1fr; }
@@ -761,10 +807,11 @@ footer {
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="navbar">
   <div class="nav-brand">
     <span class="nav-brand-om">ॐ</span>
-    Kishor & Aish
+    Arjun & Kavya
   </div>
   <div class="nav-links">
     <a href="#journey" class="nav-link">Our Story</a>
@@ -775,7 +822,12 @@ footer {
   </div>
 </nav>
 
+<!-- ═══════════════════════════════
+     HERO
+═══════════════════════════════ -->
 <section id="hero">
+
+  <!-- Mandala SVG -->
   <svg class="hero-mandala" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="250" cy="250" r="240" stroke="#C49A3C" stroke-width=".5"/>
     <circle cx="250" cy="250" r="200" stroke="#C49A3C" stroke-width=".5"/>
@@ -793,6 +845,7 @@ footer {
       <line x1="10" y1="250" x2="426" y2="74"/>
       <line x1="490" y1="250" x2="74" y2="426"/>
     </g>
+    <!-- Petal shapes -->
     <ellipse cx="250" cy="130" rx="22" ry="40" fill="#C49A3C" fill-opacity=".4"/>
     <ellipse cx="250" cy="370" rx="22" ry="40" fill="#C49A3C" fill-opacity=".4"/>
     <ellipse cx="130" cy="250" rx="40" ry="22" fill="#C49A3C" fill-opacity=".4"/>
@@ -803,6 +856,7 @@ footer {
     <ellipse cx="157" cy="343" rx="22" ry="40" transform="rotate(45 157 343)" fill="#C49A3C" fill-opacity=".3"/>
   </svg>
 
+  <!-- Corner ornaments -->
   <svg class="hero-corner tl" viewBox="0 0 180 180" fill="none">
     <path d="M10 10 L10 80 M10 10 L80 10" stroke="#C49A3C" stroke-width="1.5"/>
     <path d="M30 10 Q30 30 10 30" stroke="#C49A3C" stroke-width=".8" fill="none"/>
@@ -840,24 +894,24 @@ footer {
     </div>
     <p class="hero-together">Together with their families, joyfully invite you to witness the sacred union of</p>
     <h1 class="hero-names">
-      Kishor <span class="amp">&</span> Aish
+      Arjun <span class="amp">&</span> Kavya
     </h1>
     <div class="ornament" style="margin-top:32px">
       <div class="ornament-line"></div>
       <div class="ornament-sym" style="font-size:14px">✦ ✦ ✦</div>
       <div class="ornament-line r"></div>
     </div>
-    <div class="hero-date">15 · February · 2027</div>
+    <div class="hero-date">15 · February · 2025</div>
     <div class="hero-sub-date">Magha Shukla Saptami · Kanya Lagna</div>
 
     <div class="hero-families">
       <div class="hero-family">
-        <div class="hero-family-name">Raj Family</div>
-        <div class="hero-family-desc">Groom's side · Bengaluru</div>
+        <div class="hero-family-name">Sharma Family</div>
+        <div class="hero-family-desc">Groom's side · Hyderabad</div>
       </div>
       <div class="hero-family-divider"></div>
       <div class="hero-family">
-        <div class="hero-family-name">Bride's Family</div>
+        <div class="hero-family-name">Reddy Family</div>
         <div class="hero-family-desc">Bride's side · Bengaluru</div>
       </div>
     </div>
@@ -869,6 +923,9 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     COUNTDOWN
+═══════════════════════════════ -->
 <div id="countdown-section" class="section-bg-mid">
   <div class="motif-border"></div>
   <div style="padding: 40px 0">
@@ -898,6 +955,9 @@ footer {
   <div class="motif-border"></div>
 </div>
 
+<!-- ═══════════════════════════════
+     JOURNEY
+═══════════════════════════════ -->
 <section id="journey" class="section-bg-ivory">
   <div class="section" style="padding-top:80px;padding-bottom:80px">
     <div class="section-header reveal">
@@ -909,6 +969,7 @@ footer {
 
     <div class="journey-grid">
       <div class="journey-photo-wrap reveal-l">
+        <!-- Decorative photo frame with couple silhouette illustration -->
         <div class="journey-photo" style="background:linear-gradient(160deg,#6B1A1A 0%,#2C1810 60%,#4A0F0F 100%)">
           <svg width="240" height="320" viewBox="0 0 240 320" fill="none" style="opacity:.35">
             <!-- Groom silhouette -->
@@ -948,7 +1009,7 @@ footer {
           Arjun and Kavya first crossed paths at a mutual friend's Diwali gathering in Bengaluru, 2021. He was the one awkwardly holding two plates of sweets; she was the one who offered to hold one. That exchange of a plate of ladoos turned into hours of conversation under string lights, and neither of them wanted the evening to end.
         </p>
         <p class="journey-para">
-          What followed were long phone calls between Bengaluru and Bengaluru, weekend train journeys, and the slow, beautiful realisation that they were building something rare. When Arjun proposed on the terrace of the same friend's home two years later — on another Diwali, lit with the same lights — Kavya said yes before he'd finished the sentence.
+          What followed were long phone calls between Hyderabad and Bengaluru, weekend train journeys, and the slow, beautiful realisation that they were building something rare. When Arjun proposed on the terrace of the same friend's home two years later — on another Diwali, lit with the same lights — Kavya said yes before he'd finished the sentence.
         </p>
 
         <div class="journey-milestone">
@@ -984,6 +1045,9 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     GALLERY
+═══════════════════════════════ -->
 <section id="gallery" class="section-bg-dark">
   <div style="padding: 80px 0">
     <div class="section-header reveal" style="padding:0 40px;margin-bottom:48px">
@@ -1001,6 +1065,7 @@ footer {
   </div>
 </section>
 
+<!-- LIGHTBOX -->
 <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
   <div id="lightbox-img-wrap">
     <button class="lb-close" onclick="closeLightbox()">✕</button>
@@ -1011,6 +1076,9 @@ footer {
   </div>
 </div>
 
+<!-- ═══════════════════════════════
+     CELEBRATION DETAILS
+═══════════════════════════════ -->
 <section id="celebration" class="section-bg-ivory">
   <div class="section">
     <div class="section-header reveal">
@@ -1021,6 +1089,7 @@ footer {
     </div>
 
     <div class="celebrations-grid">
+      <!-- Muhurtham -->
       <div class="celebration-card reveal delay-1">
         <div class="celebration-icon">🪔</div>
         <span class="celebration-type">Sacred ceremony</span>
@@ -1044,7 +1113,7 @@ footer {
           <div class="celebration-detail-icon">📍</div>
           <div>
             <span class="celebration-detail-label">Venue</span>
-            <span class="celebration-detail-val">Sri Lakshmi Kalyana Mandapam<br>Banjara Hills, Bengaluru</span>
+            <span class="celebration-detail-val">Sri Lakshmi Kalyana Mandapam<br>Banjara Hills, Hyderabad</span>
           </div>
         </div>
         <div class="celebration-detail">
@@ -1083,7 +1152,7 @@ footer {
           <div class="celebration-detail-icon">📍</div>
           <div>
             <span class="celebration-detail-label">Venue</span>
-            <span class="celebration-detail-val">The Grand Kakatiya Hotel & Towers<br>Begumpet, Bengaluru</span>
+            <span class="celebration-detail-val">The Grand Kakatiya Hotel & Towers<br>Begumpet, Hyderabad</span>
           </div>
         </div>
         <div class="celebration-detail">
@@ -1123,6 +1192,9 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     FAMILIES
+═══════════════════════════════ -->
 <section id="families" class="section-bg-dark">
   <div style="padding:80px 0">
     <div class="section-header reveal" style="padding:0 40px;margin-bottom:56px">
@@ -1133,17 +1205,25 @@ footer {
 
     <div class="families-grid">
       <div class="family-block reveal-l">
-        <span class="family-block-title">Bride's Family</span>
-        <h3 class="family-block-name">Bride's Family</h3>
-        <p class="family-block-desc">Banjara Hills, Bengaluru · Karnataka</p>
+        <span class="family-block-title">Groom's Family</span>
+        <h3 class="family-block-name">Sharma Family</h3>
+        <p class="family-block-desc">Banjara Hills, Hyderabad · Telugu Brahmin</p>
 
         <div class="family-member">
           <div class="family-member-name">Ramachandra Sharma</div>
-          <div class="family-member-rel">Father of the groom · Retired</div>
+          <div class="family-member-rel">Father of the groom · Retired IAS Officer</div>
         </div>
         <div class="family-member">
           <div class="family-member-name">Sujatha Sharma</div>
           <div class="family-member-rel">Mother of the groom · Homemaker</div>
+        </div>
+        <div class="family-member">
+          <div class="family-member-name">Sunitha Sharma</div>
+          <div class="family-member-rel">Sister of the groom · Software Engineer</div>
+        </div>
+        <div class="family-member">
+          <div class="family-member-name">Late Krishnamurthy Sharma</div>
+          <div class="family-member-rel">Paternal grandfather — forever in our hearts</div>
         </div>
       </div>
 
@@ -1155,24 +1235,34 @@ footer {
       </div>
 
       <div class="family-block reveal-r">
-        <span class="family-block-title">Groom's Family</span>
-        <h3 class="family-block-name">Raj Family</h3>
-        <p class="family-block-desc">Koppa, Bengaluru · Telugu Kamma</p>
+        <span class="family-block-title">Bride's Family</span>
+        <h3 class="family-block-name">Reddy Family</h3>
+        <p class="family-block-desc">Jayanagar, Bengaluru · Telugu Kamma</p>
 
         <div class="family-member">
-          <div class="family-member-name">Rajappa K C</div>
-          <div class="family-member-rel">Father of the bride · Retired</div>
+          <div class="family-member-name">Venkataramana Reddy</div>
+          <div class="family-member-rel">Father of the bride · Businessman</div>
         </div>
         <div class="family-member">
-          <div class="family-member-name">Shashekala</div>
-          <div class="family-member-rel">Mother of the bride · Homemaker</div>
+          <div class="family-member-name">Padmavathi Reddy</div>
+          <div class="family-member-rel">Mother of the bride · School Principal</div>
         </div>
+        <div class="family-member">
+          <div class="family-member-name">Vikram Reddy</div>
+          <div class="family-member-rel">Brother of the bride · CA · Bengaluru</div>
+        </div>
+        <div class="family-member">
+          <div class="family-member-name">Savitri Reddy</div>
+          <div class="family-member-rel">Maternal grandmother · Our guiding light</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     VENUE
+═══════════════════════════════ -->
 <section id="venue" class="section-bg-mid">
   <div class="section">
     <div class="section-header reveal">
@@ -1188,7 +1278,7 @@ footer {
           <div class="venue-map-placeholder">
             <div class="venue-map-icon">🗺️</div>
             <div class="venue-map-label">Sri Lakshmi Kalyana Mandapam</div>
-            <button class="venue-map-btn" onclick="window.open('https://maps.google.com?q=Banjara+Hills+Bengaluru','_blank')">Open in Google Maps →</button>
+            <button class="venue-map-btn" onclick="window.open('https://maps.google.com?q=Banjara+Hills+Hyderabad','_blank')">Open in Google Maps →</button>
           </div>
           <!-- Decorative grid overlay -->
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.08" viewBox="0 0 400 300" fill="none">
@@ -1204,7 +1294,7 @@ footer {
             <div class="venue-map-placeholder">
               <div class="venue-map-icon">🏨</div>
               <div class="venue-map-label" style="text-align:center">The Grand Kakatiya Hotel & Towers<br><span style="font-size:12px">Reception Venue</span></div>
-              <button class="venue-map-btn" onclick="window.open('https://maps.google.com?q=Grand+Kakatiya+Hotel+Bengaluru','_blank')">Open in Google Maps →</button>
+              <button class="venue-map-btn" onclick="window.open('https://maps.google.com?q=Grand+Kakatiya+Hotel+Hyderabad','_blank')">Open in Google Maps →</button>
             </div>
           </div>
         </div>
@@ -1218,7 +1308,7 @@ footer {
             <div class="venue-detail-icon">📍</div>
             <div>
               <span class="venue-detail-label">Address</span>
-              <span class="venue-detail-val">8-2-293/82/A, Road No. 36<br>Banjara Hills, Bengaluru — 500 105<br>Karnataka, India</span>
+              <span class="venue-detail-val">8-2-293/82/A, Road No. 36<br>Banjara Hills, Hyderabad — 500 034<br>Telangana, India</span>
             </div>
           </div>
           <div class="venue-detail-row">
@@ -1244,7 +1334,7 @@ footer {
             <div class="venue-detail-icon">📍</div>
             <div>
               <span class="venue-detail-label">Address</span>
-              <span class="venue-detail-val">6-3-1187, Begumpet<br>Bengaluru — 500 105<br>Karnataka, India</span>
+              <span class="venue-detail-val">6-3-1187, Begumpet<br>Hyderabad — 500 016<br>Telangana, India</span>
             </div>
           </div>
           <div class="venue-detail-row">
@@ -1262,7 +1352,7 @@ footer {
             <span>Rajiv Gandhi International Airport is 30 km away — the families are arranging shuttle buses from the airport for outstation guests.</span>
           </div>
           <div class="venue-transport-item">
-            <span>Bengaluru Metro — Banjara Hills station is a 5-minute auto-rickshaw ride from the Mandapam.</span>
+            <span>Hyderabad Metro — Banjara Hills station is a 5-minute auto-rickshaw ride from the Mandapam.</span>
           </div>
           <div class="venue-transport-item">
             <span>Ola & Uber are readily available throughout the city. Pre-book from the airport for early morning.</span>
@@ -1273,6 +1363,9 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     CONTACT & RSVP
+═══════════════════════════════ -->
 <section id="contact" class="section-bg-ivory">
   <div class="section">
     <div class="section-header reveal">
@@ -1291,20 +1384,20 @@ footer {
 
         <div class="contact-person">
           <span class="contact-person-role">Groom</span>
-          <div class="contact-person-name">Kishor</div>
-          <div class="contact-person-detail">📱 <a href="tel:+919876543210">+91 ----- -----</a></div>
-          <div class="contact-person-detail">✉ <a href="mailto:arjun.sharma@gmail.com">kishorpaul962@gmail.com</a></div>
+          <div class="contact-person-name">Arjun Sharma</div>
+          <div class="contact-person-detail">📱 <a href="tel:+919876543210">+91 98765 43210</a></div>
+          <div class="contact-person-detail">✉ <a href="mailto:arjun.sharma@gmail.com">arjun.sharma@gmail.com</a></div>
         </div>
         <div class="contact-person">
           <span class="contact-person-role">Bride</span>
-          <div class="contact-person-name">Aish</div>
-          <div class="contact-person-detail">📱 <a href="tel:+919876543211">+91 ----- -----</a></div>
-          <div class="contact-person-detail">✉ <a href="mailto:kavya.reddy@gmail.com">aish.gopal@gmail.com</a></div>
+          <div class="contact-person-name">Kavya Reddy</div>
+          <div class="contact-person-detail">📱 <a href="tel:+919876543211">+91 98765 43211</a></div>
+          <div class="contact-person-detail">✉ <a href="mailto:kavya.reddy@gmail.com">kavya.reddy@gmail.com</a></div>
         </div>
         <div class="contact-person">
           <span class="contact-person-role">Wedding Coordinator</span>
-          <div class="contact-person-name">Kishor</div>
-          <div class="contact-person-detail">📱 <a href="tel:+919876543212">+91 ----- -----</a></div>
+          <div class="contact-person-name">Sunitha Sharma</div>
+          <div class="contact-person-detail">📱 <a href="tel:+919876543212">+91 98765 43212</a></div>
           <div class="contact-person-detail" style="font-size:13px;font-style:italic;color:var(--ink-soft)">For logistics, accommodation & outstation guests</div>
         </div>
 
@@ -1358,7 +1451,7 @@ footer {
   </div>
 </section>
 
-
+<!-- FOOTER -->
 <footer>
   <div class="motif-border"></div>
   <div style="padding:60px 0 40px">
@@ -1368,17 +1461,18 @@ footer {
       "Let there be spaces in your togetherness, and let the winds of the heavens dance between you."<br>
       <cite style="font-size:12px;opacity:.5;font-style:normal">— Kahlil Gibran</cite>
     </blockquote>
-    <div class="footer-names">Kishor & Aish</div>
-    <div class="footer-date">15 February 2025 · Bengaluru</div>
+    <div class="footer-names">Arjun & Kavya</div>
+    <div class="footer-date">15 February 2025 · Hyderabad</div>
     <div style="margin-top:32px;font-size:12px;color:rgba(245,232,192,.18);font-style:italic">Made with love 🌸</div>
   </div>
   <div class="motif-border"></div>
-  <div style="margin-top:32px;font-size:16px;color:rgba(245,232,192,.18);font-style:italic" class="designer">Designed and Developed by - Kishor</div>
 </footer>
 
+<!-- TOAST -->
 <div id="toast"></div>
 
 <script>
+/* ════ GALLERY DATA ════ */
 const galleryPhotos = [
   { emoji: '🌄', caption: 'Sunrise at Coorg — our first trip together', aspect: '2/3' },
   { emoji: '🏔️', caption: 'Ooty — where we got lost and didn\'t mind at all', aspect: '4/3' },
@@ -1448,8 +1542,9 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') lbNav(1);
 });
 
+/* ════ COUNTDOWN ════ */
 function updateCountdown() {
-  const wedding = new Date('2027-02-15T06:15:00+05:30').getTime();
+  const wedding = new Date('2025-02-15T06:15:00+05:30').getTime();
   const now = Date.now();
   const diff = wedding - now;
   if (diff <= 0) {
@@ -1468,19 +1563,22 @@ function updateCountdown() {
   document.getElementById('cd-mins').textContent  = String(m).padStart(2, '0');
   document.getElementById('cd-secs').textContent  = String(s).padStart(2, '0');
 }
-(usetIntervalpdateCountdown, 1000);
+setInterval(updateCountdown, 1000);
 updateCountdown();
 
+/* ════ SCROLL REVEALS ════ */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => revealObs.observe(el));
 
+/* ════ NAV SCROLL ════ */
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow =
     window.scrollY > 40 ? '0 2px 20px rgba(0,0,0,.4)' : 'none';
 }, { passive: true });
 
+/* ════ TOAST ════ */
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -1488,6 +1586,7 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
+/* ════ RSVP ════ */
 function submitRSVP() {
   const name = document.getElementById('rsvp-name').value.trim();
   const phone = document.getElementById('rsvp-phone').value.trim();
@@ -1501,6 +1600,7 @@ function submitRSVP() {
   document.getElementById('rsvp-events').value = '';
 }
 
+/* ════ INIT ════ */
 buildGallery();
 </script>
 </body>
