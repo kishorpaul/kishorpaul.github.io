@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+    }
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+      /* background-color: #1D9E75; */
+    }
+
+    .bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      position: relative;
+      height: 100%;
+      /* background-color: #ee0d0d; */
+    }
+
+    .bar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .top, .bot {
+      width: 5px;
+    }
+    .top { border-radius: 13px 13px 0 0; background: #8a00b8; }
+    .bot { border-radius: 0 0 13px 13px; background: #b93bdc; }
+
+    @keyframes pulse {
+      0%, 100% { height: 0px;  opacity: 0.5; }
+      35%       { height: 10px; opacity: 1;   }
+    }
+
+    .top, .bot {
+      animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      animation-delay: calc(var(--i) * .3s);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="bars" id="bars">
+  </div>
+
+  <script>
+    const count = 15;
+    const bars = document.getElementById("bars")
+
+    for (let i=0; i<count-1; i++){
+        const wrap = document.createElement('div')
+        wrap.className = 'bar-wrap';
+        wrap.style.setProperty('--i', i);
+        wrap.innerHTML = '<div class="top"></div><div class="bot"></div>'
+        bars.appendChild(wrap)
+    }
+
+  </script>
+</body>
+</html>

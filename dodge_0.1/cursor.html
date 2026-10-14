@@ -1,0 +1,57 @@
+<html>
+    <style>
+        :root{
+            --black: #000;
+            --orange-dark: #fc5d00;
+            --orange-light: #d07c0e;
+        }
+        body{
+            background-color: var(--black);
+            cursor: none;
+        }
+        .cur{
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--orange-dark);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: .1s all ease;
+            mix-blend-mode:screen;
+        }
+
+        .cur-border{
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            border: 1px solid rgb(232,133,58,.45);
+            width: 35px;
+            height: 35px;
+            transform: translate(-50%, -50%);
+            transition: .2s all ease;
+            box-shadow: 5px solid var(--orange-light);
+        }
+    </style>
+    <body>
+        <div class="cur" id="cur"></div>
+        <div class="cur-border" id="cur-border"></div>
+    </body>
+    <script>
+        const cur = document.getElementById("cur");
+        const cur_border = document.getElementById("cur-border");
+        let rx = 0;
+        let ry = 0;
+
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px';
+            cur.style.top = e.clientY + 'px';
+            cur_border.style.left = e.clientX + 'px';
+            cur_border.style.top = e.clientY + 'px';
+        })
+    </script>
+</html>
