@@ -1,0 +1,14 @@
+{
+  "name": "pulse-loader",
+  "version": "1.0.0",
+  "description": "Lightweight zero-dependency animated loading bar web component",
+  "main": "src/pulse-loader.js",
+  "scripts": {
+    "build": "npx terser src/pulse-loader.js -o dist/pulse-loader.min.js --compress --mangle",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["loading", "loader", "animation", "web-component", "css-animation"],
+  "author": "your-name",
+  "license": "MIT",
+  "files": ["src", "demo"]
+}
