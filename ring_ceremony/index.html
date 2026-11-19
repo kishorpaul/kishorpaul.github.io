@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kishor & Keerthana – Engagement Ceremony</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f0;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --green-dark: #2d5a3d;
+    --rose: #b85c6e;
+    --text-dark: #2c2c2c;
+    --text-mid: #555;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at top left, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(184,92,110,0.07) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  /* ── BORDER FRAME ── */
+  .frame {
+    max-width: 540px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 0 0 40px;
+    position: relative;
+  }
+  .frame::before, .frame::after {
+    content: '';
+    position: fixed;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--gold) 15%, var(--gold) 85%, transparent);
+    z-index: 10;
+  }
+  .frame::before { left: calc(50% - 270px); }
+  .frame::after  { right: calc(50% - 270px); }
+
+  /* ── TOP ORNAMENT ── */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 20px 0;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .top-bar::before, .top-bar::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .top-bar::before { background: linear-gradient(to right, transparent, var(--gold)); }
+  .top-bar::after  { background: linear-gradient(to left,  transparent, var(--gold)); }
+
+  /* ── DEITY SECTION ── */
+  .deity-section {
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
+  .deity-icon {
+    width: 70px; height: 70px;
+    margin: 0 auto 10px;
+    background: radial-gradient(circle, #fff9e8 60%, #f0d890);
+    border-radius: 50%;
+    border: 2.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  }
+  .deity-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+  }
+  .deity-name span { color: var(--text-mid); }
+
+  /* ── BLESSINGS TEXT ── */
+  .blessing {
+    text-align: center;
+    padding: 14px 24px 0;
+  }
+  .blessing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  /* ── INVITE TEXT ── */
+  .invite-text {
+    text-align: center;
+    padding: 18px 24px 0;
+  }
+  .invite-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  /* ── NAMES ── */
+  .names-section {
+    text-align: center;
+    padding: 10px 24px 6px;
+    position: relative;
+  }
+  .name-groom {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(52px, 14vw, 72px);
+    color: var(--green-dark);
+    line-height: 1.1;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+  }
+  .ampersand-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 2px 0 2px;
+  }
+  .ampersand-row span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold);
+  }
+  .amp-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+    max-width: 80px;
+  }
+  .heart-row {
+    font-size: 18px;
+    color: var(--rose);
+    margin-left: 10px;
+  }
+  .name-bride {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(52px, 14vw, 72px);
+    color: var(--rose);
+    line-height: 1.1;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+  }
+
+  /* ── TAGLINE ── */
+  .tagline {
+    text-align: center;
+    padding: 10px 30px 6px;
+  }
+  .tagline p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .tagline-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .tagline-divider::before, .tagline-divider::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+  .tagline-divider .heart { font-size: 12px; color: var(--gold); }
+
+  /* ── DETAILS CARD ── */
+  .details-card {
+    margin: 18px 20px 0;
+    border: 1.5px solid var(--gold-light);
+    border-radius: 16px;
+    padding: 20px 18px;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 24px rgba(201,168,76,0.12);
+  }
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 10px 0;
+  }
+  .detail-row + .detail-row {
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .detail-icon {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: var(--green-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+    color: #fff;
+  }
+  .detail-content { flex: 1; }
+  .detail-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--rose);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .detail-label::before, .detail-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: rgba(184,92,110,0.3);
+    max-width: 28px;
+  }
+  .detail-label::before { display: none; }
+  .detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
+  .detail-value .superscript {
+    font-size: 11px;
+    vertical-align: super;
+    font-weight: 600;
+  }
+
+  /* ── BOTTOM QUOTE ── */
+  .bottom-quote {
+    margin: 18px 20px 0;
+    background: var(--green-dark);
+    border-radius: 14px;
+    padding: 16px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .bottom-quote::before {
+    content: '❝';
+    position: absolute;
+    top: -4px; left: 10px;
+    font-size: 60px;
+    color: rgba(255,255,255,0.08);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+  .bottom-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    position: relative;
+  }
+  .bottom-quote .quote-heart {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    margin-left: 4px;
+  }
+  .bottom-quote-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .bottom-quote-divider::before, .bottom-quote-divider::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: rgba(201,168,76,0.4);
+  }
+  .bottom-quote-divider .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+
+  /* ── SIGN OFF ── */
+  .signoff {
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
+  .signoff .with-love {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+  }
+  .signoff .family-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  /* ── BOTTOM ORNAMENT ── */
+  .bottom-ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 18px;
+    padding: 4px 20px 0;
+    letter-spacing: 6px;
+  }
+
+  /* ── FLORAL CORNERS (CSS) ── */
+  .corner { position: absolute; font-size: 28px; opacity: 0.5; }
+  .corner-tl { top: 60px; left: 14px; transform: rotate(-20deg); }
+  .corner-tr { top: 60px; right: 14px; transform: rotate(20deg) scaleX(-1); }
+  .corner-bl { bottom: 60px; left: 14px; transform: rotate(20deg) scaleY(-1); }
+  .corner-br { bottom: 60px; right: 14px; transform: rotate(-20deg) scale(-1,-1); }
+
+  /* ── LANTERN decoration ── */
+  .lantern {
+    position: absolute;
+    right: 16px;
+    top: 100px;
+    font-size: 26px;
+    opacity: 0.4;
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  @keyframes sway {
+    0%,100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown {
+    margin: 18px 20px 0;
+    text-align: center;
+  }
+  .countdown-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 10px;
+  }
+  .countdown-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .countdown-box {
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--gold-light);
+    border-radius: 10px;
+    padding: 10px 14px 8px;
+    min-width: 62px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.1);
+  }
+  .countdown-box .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1;
+  }
+  .countdown-box .unit {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-top: 2px;
+  }
+  .confetti-anim {
+    display: flex; justify-content: center;
+    gap: 6px; font-size: 18px; margin-top: 8px;
+    animation: bounce 1.2s ease infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="corner corner-tl">🌸</div>
+  <div class="corner corner-tr">🌸</div>
+  <div class="corner corner-bl">🌿</div>
+  <div class="corner corner-br">🌿</div>
+  <div class="lantern">🏮</div>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">Engagement Ceremony</div>
+
+  <!-- DEITY -->
+  <div class="deity-section">
+    <div class="deity-icon">🙏</div>
+    <div class="deity-name"><span>||</span> Shri Manjunatha Swamy * Shri Muneshwara Swamy <span>||</span></div>
+  </div>
+
+  <!-- BLESSINGS -->
+  <div class="blessing">
+    <p>With the Blessings of Almighty<br>&amp; Our Beloved Family</p>
+  </div>
+
+  <!-- INVITE TEXT -->
+  <div class="invite-text">
+    <p>You are Cordially Invited to<br>the Engagement Ceremony of</p>
+  </div>
+
+  <!-- NAMES -->
+  <div class="names-section">
+    <div class="name-groom">Kishor</div>
+    <div class="ampersand-row">
+      <div class="amp-line"></div>
+      <span>&amp;</span>
+      <div class="amp-line"></div>
+      <span class="heart-row">♡</span>
+    </div>
+    <div class="name-bride">Keerthana</div>
+  </div>
+
+  <!-- TAGLINE -->
+  <div class="tagline">
+    <p>Two souls, one promise,<br>a lifetime of togetherness.</p>
+    <div class="tagline-divider"><span class="heart">♥</span></div>
+  </div>
+
+  <!-- DETAILS CARD -->
+  <div class="details-card">
+    <div class="detail-row">
+      <div class="detail-icon">📅</div>
+      <div class="detail-content">
+        <div class="detail-label">Date</div>
+        <div class="detail-value">Sunday, 22<span class="superscript">nd</span> November 2026</div>
+      </div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-icon">🕙</div>
+      <div class="detail-content">
+        <div class="detail-label">Time</div>
+        <div class="detail-value">10:00 AM</div>
+      </div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-icon">📍</div>
+      <div class="detail-content">
+        <div class="detail-label">Venue</div>
+        <div class="detail-value">Maligenahalli,<br>Nandhi Cross, Devanahalli.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown">
+    <div class="countdown-label">Counting down to the big day</div>
+    <div class="countdown-boxes">
+      <div class="countdown-box"><div class="num" id="cd-days">--</div><div class="unit">Days</div></div>
+      <div class="countdown-box"><div class="num" id="cd-hrs">--</div><div class="unit">Hours</div></div>
+      <div class="countdown-box"><div class="num" id="cd-min">--</div><div class="unit">Mins</div></div>
+      <div class="countdown-box"><div class="num" id="cd-sec">--</div><div class="unit">Secs</div></div>
+    </div>
+    <div id="confetti-row" style="display:none" class="confetti-anim">🎉 🌸 💍 🌸 🎉</div>
+  </div>
+
+  <!-- BOTTOM QUOTE -->
+  <div class="bottom-quote">
+    <p>Two hearts, two families,<br>one beautiful beginning.<span class="quote-heart">♡</span></p>
+    <div class="bottom-quote-divider">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- SIGN OFF -->
+  <div class="signoff">
+    <div class="with-love">With Love</div>
+    <div class="family-name">KCR FAMILY</div>
+  </div>
+
+  <!-- BOTTOM ORNAMENT -->
+  <div class="bottom-ornament">✦ ✦ ✦</div>
+</div>
+
+<script>
+  const event = new Date('2026-11-22T10:00:00');
+
+  function update() {
+    const now = new Date();
+    const diff = event - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hrs').textContent  = '0';
+      document.getElementById('cd-min').textContent  = '0';
+      document.getElementById('cd-sec').textContent  = '0';
+      document.getElementById('confetti-row').style.display = 'flex';
+      return;
+    }
+
+    const days = Math.floor(diff / 86400000);
+    const hrs  = Math.floor((diff % 86400000) / 3600000);
+    const min  = Math.floor((diff % 3600000)  / 60000);
+    const sec  = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hrs').textContent  = String(hrs).padStart(2,'0');
+    document.getElementById('cd-min').textContent  = String(min).padStart(2,'0');
+    document.getElementById('cd-sec').textContent  = String(sec).padStart(2,'0');
+  }
+
+  update();
+  setInterval(update, 1000);
+</script>
+</body>
+</html>
